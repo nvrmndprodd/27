@@ -1,0 +1,81 @@
+N = int(input())
+line = []
+for i in range (6):
+	line.append(int(input()))
+k58 = k29 = k2 = nek = [0]*8
+for i in range (8):
+	k58[i] = [-1, -1]
+	k29[i] = [-1, -1]
+	k2[i] = [-1, -1]
+	nek[i] = [-1, -1]
+ans = -1
+for i in range (6, N):
+	x = int(input())
+	t = x % 8
+	if x % 58 == 0:
+		if x > 80:
+			if x * k58[(8 - t) % 8][0] > ans: ans = x * k58[(8 - t) % 8][0]
+			if x * k58[(8 - t) % 8][1] > ans: ans = x * k58[(8 - t) % 8][1]
+			if x * k29[(8 - t) % 8][0] > ans: ans = x * k29[(8 - t) % 8][0]
+			if x * k29[(8 - t) % 8][1] > ans: ans = x * k29[(8 - t) % 8][1]
+			if x * k2[(8 - t) % 8][0] > ans: ans = x * k2[(8 - t) % 8][0]
+			if x * k2[(8 - t) % 8][1] > ans: ans = x * k2[(8 - t) % 8][1]
+			if x * nek[(8 - t) % 8][0] > ans: ans = x * nek[(8 - t) % 8][0]
+			if x * nek[(8 - t) % 8][1] > ans: ans = x * nek[(8 - t) % 8][1]
+		else:
+			if x * k58[(8 - t) % 8][1] > ans: ans = x * k58[(8 - t) % 8][1]
+			if x * k29[(8 - t) % 8][1] > ans: ans = x * k29[(8 - t) % 8][1]
+			if x * k2[(8 - t) % 8][1] > ans: ans = x * k2[(8 - t) % 8][1]
+			if x * nek[(8 - t) % 8][1] > ans: ans = x * nek[(8 - t) % 8][1]
+	elif x % 29 == 0:
+		if x > 80:
+			if x * k58[(8 - t) % 8][0] > ans: ans = x * k58[(8 - t) % 8][0]
+			if x * k58[(8 - t) % 8][1] > ans: ans = x * k58[(8 - t) % 8][1]
+			if x * k2[(8 - t) % 8][0] > ans: ans = x * k2[(8 - t) % 8][0]
+			if x * k2[(8 - t) % 8][1] > ans: ans = x * k2[(8 - t) % 8][1]
+		else:
+			if x * k58[(8 - t) % 8][1] > ans: ans = x * k58[(8 - t) % 8][1]
+			if x * k2[(8 - t) % 8][1] > ans: ans = x * k2[(8 - t) % 8][1]
+	elif x % 2 == 0:
+		if x > 80:
+			if x * k58[(8 - t) % 8][0] > ans: ans = x * k58[(8 - t) % 8][0]
+			if x * k58[(8 - t) % 8][1] > ans: ans = x * k58[(8 - t) % 8][1]
+			if x * k29[(8 - t) % 8][0] > ans: ans = x * k29[(8 - t) % 8][0]
+			if x * k29[(8 - t) % 8][1] > ans: ans = x * k29[(8 - t) % 8][1]
+		else:
+			if x * k58[(8 - t) % 8][1] > ans: ans = x * k58[(8 - t) % 8][1]
+			if x * k29[(8 - t) % 8][1] > ans: ans = x * k29[(8 - t) % 8][1]
+	else:
+		if x > 80:
+			if x * k58[(8 - t) % 8][0] > ans: ans = x * k58[(8 - t) % 8][0]
+			if x * k58[(8 - t) % 8][1] > ans: ans = x * k58[(8 - t) % 8][1]
+		else:
+			if x * k58[(8 - t) % 8][1] > ans: ans = x * k58[(8 - t) % 8][1]
+
+
+	t = line[i % 6]
+	if t % 58 == 0:
+		if t > 80:
+			if t > k58[t % 8][1]: k58[t % 8][1] = t
+		else:
+			if t > k58[t % 8][0]: k58[t % 8][0] = t
+    elif t % 29 == 0:
+		if t > 80:
+			if t > k29[t % 8][1]: k29[t % 8][1] = t
+		else:
+			if t > k29[t % 8][0]: k29[t % 8][0] = t	
+	elif t % 2 == 0:
+		if t > 80:
+			if t > k2[t % 8][1]: k2[t % 8][1] = t
+		else:
+			if t > k2[t % 8][0]: k2[t % 8][0] = t
+	else:
+		if t > 80:
+			if t > nek[t % 8][1]: nek[t % 8][1] = t
+		else:
+			if t > nek[t % 8][0]: nek[t % 8][0] = t
+	
+	
+	line[i % 6] = x
+	
+print(ans)
