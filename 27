@@ -59,7 +59,7 @@ for i in range (6, N):
 			if t > k58[t % 8][1]: k58[t % 8][1] = t
 		else:
 			if t > k58[t % 8][0]: k58[t % 8][0] = t
-    elif t % 29 == 0:
+	elif t % 29 == 0:
 		if t > 80:
 			if t > k29[t % 8][1]: k29[t % 8][1] = t
 		else:
