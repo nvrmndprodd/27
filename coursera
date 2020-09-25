@@ -1,0 +1,70 @@
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+void PrintVector(const vector<string>& vector) {
+	cout << vector.size() << " ";
+	for (auto c : vector) {
+		cout << c << " ";
+	}
+	cout << "" << endl;
+}
+
+int main() {
+	vector<string> d = {};
+	vector<vector<string>> line(31, d);
+
+	string s, cmd;
+	int i, Q, month = 1;
+
+	cin >> Q;
+	for (int n = 0; n < Q; ++n) {
+		cin >> cmd;
+
+		if (cmd == "NEXT") {
+			++month;
+			int b = 0;
+			if (month == 2) {
+				b = 28;
+			}
+			else if (line.size() == 30 || month == 3 || month == 8) {
+				b = 31;
+			}
+			else {
+				b = 30;
+			}
+			if (month == 12) {
+				month = 1;
+			}
+			vector<vector<string>> line1(b);
+			for (int c = 0; c < line1.size() && c < line.size(); ++c) {
+					line1[c] = line[c];
+			}
+			if (b == 30 || b == 28) {
+				for (int w = b - 1; w < 31; ++w) {
+					for (auto c : line[w]) {
+						line1[b - 1].push_back(c);
+					}
+				}
+			}
+			line.clear();
+			line = line1;
+		}
+		else {
+			cin >> i;
+			if (cmd == "DUMP") {
+				PrintVector(line[i - 1]);
+			}
+			else {
+				cin >> s;
+				line[i - 1].push_back(s);
+			}
+		}
+	}
+
+
+
+	return 0;
+}
